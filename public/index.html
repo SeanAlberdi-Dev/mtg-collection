@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MTG Collection</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header><p class="eyebrow">COLECCIÓN LOCAL</p><h1>MTG Collection</h1><p>Tu inventario privado de Magic.</p></header>
+      <section class="card">
+        <h2>Añadir carta</h2>
+        <form id="card-form">
+          <label class="relative">Nombre<input name="name" required maxlength="120" autocomplete="off" placeholder="Ej. Lightning Bolt" /><input name="imageUrl" type="hidden" /><input name="backImageUrl" type="hidden" /><div id="card-suggestions" class="suggestion-list" hidden></div></label>
+          <label class="relative">Edición<input name="setName" maxlength="120" autocomplete="off" placeholder="Elige una carta primero" /><div id="edition-suggestions" class="suggestion-list edition-list" hidden></div></label>
+          <div class="columns"><label>Copias<input name="quantity" required type="number" min="1" max="9999" value="1" /></label><label>Idioma<input id="language-value" name="language" value="English" type="hidden" /><button class="select-trigger" id="language-trigger" type="button" aria-expanded="false">Inglés <span>⌄</span></button><div id="language-options" class="language-options" hidden></div></label></div>
+          <div class="columns"><label>Acabado<select name="finish"><option value="normal">Normal</option><option value="foil">Foil</option></select></label><label>Estado<input name="condition" value="Near Mint" maxlength="40" /></label></div>
+          <label>Ubicación<input name="location" maxlength="120" placeholder="Caja A · carpeta 2 · mazo" /></label>
+          <button>Guardar carta</button><p id="message" role="status"></p>
+        </form>
+      </section>
+      <section class="card"><div class="collection-heading"><h2>Mi colección</h2><span id="total">0 cartas</span></div><input id="filter" type="search" placeholder="Filtrar por nombre, edición o ubicación" /><ul id="cards"></ul></section>
+    </main>
+    <template id="card-template"><li><div class="card-content"><button class="art-button" type="button" aria-label="Ver imagen de la carta"><div class="card-art"><img class="image" alt="" /></div></button><div><strong class="name"></strong><p class="details"></p></div></div><div class="card-actions"><button class="flip" type="button" hidden>Voltear</button><button class="remove" aria-label="Eliminar carta">Eliminar</button></div></li></template>
+    <dialog id="image-dialog" aria-labelledby="image-dialog-title"><div class="viewer"><button class="close-viewer" type="button" aria-label="Cerrar imagen">×</button><h2 id="image-dialog-title"></h2><img id="large-image" alt="" /><button id="flip-viewer" type="button" hidden>Mostrar reverso</button></div></dialog>
+    <script src="/app.js"></script>
+  </body>
+</html>
